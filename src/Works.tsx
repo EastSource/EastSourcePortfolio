@@ -3,7 +3,6 @@ import MagicDragonAdventure from './assets/Images/MagicDragonAdventure.webp'
 import SEARCHING from './assets/Images/SEARCHING.webp'
 import HuntingAction2D from './assets/Images/HuntingAction2D.webp'
 import QFrameworkTrick from './assets/Images/QFrameworkTrick.webp'
-import MagicDragonAdventureMovie from './assets/Movies/MagicDragonAdventure.mp4'
 
 function Works() {
   return (
@@ -14,36 +13,37 @@ function Works() {
                 image={pandd2025summer}
                 title="pandd2025summer"
                 href="https://pandd.sakura.ne.jp/index.html"
-                tag="Game"
+                tag="GameDev"
                 chip="企画開発部というゲーム制作サークルでこちらに収録されているPuzzleKnightsというゲームを協同制作させて頂きました。プログラマーとして敵キャラクターの経路探索などを実装しました。"
             />
             <WorksCard
                 image={MagicDragonAdventure}
                 title="Magic Dragon Adventure"
                 href="https://drive.google.com/drive/folders/1K_SyxiH1gvEE3XBdIsW9PoCj0qVlvfBi?usp=sharing"
-                tag="Game"
-                movie={MagicDragonAdventureMovie}
-                chip="Unityで個人制作した3Dアクションゲームです。"
+                tag="GameDev"
+                movie="https://youtu.be/6znD3YUyg8o"
+                chip="Unityで初めて個人制作した3Dアクションゲームです。"
             />
             <WorksCard
                 image={SEARCHING}
                 title="SEARCHING"
                 href="https://drive.google.com/drive/folders/1K_SyxiH1gvEE3XBdIsW9PoCj0qVlvfBi?usp=sharing"
-                tag="Game"
+                tag="GameDev"
                 github="https://github.com/EastSource/SEARCHING"
             />
             <WorksCard
                 image={HuntingAction2D}
                 title="Hunting Action 2D"
                 href="https://github.com/EastSource/HuntingAction2D"
-                tag="Game"
+                tag="GameDev"
+                movie="https://youtu.be/hHxpV4BJQ7k"
                 github="https://github.com/EastSource/HuntingAction2D"
             />
             <WorksCard
                 image={QFrameworkTrick}
                 title="QFramework Trick"
                 href="https://github.com/EastSource/QFlameworkTrick"
-                tag="Game"
+                tag="GameDev"
                 chip="UnityのフレームワークであるQFrameworkを用いMVCパターンを用いたゲーム作りを学習した際に作った簡単な横スクロールアクションゲームです"
                 github="https://github.com/EastSource/QFlameworkTrick"
             />
@@ -59,12 +59,19 @@ function Works() {
                 tag="Music"
                 embedSrc="https://open.spotify.com/embed/track/4ScQAjLHntfzFgmr2C3uvP?utm_source=generator&si=4776a396abea485d"
             />
+            <WorksCard
+                title="Animation Practice"
+                href="https://youtu.be/9nFp1l6j6DI"
+                tag="Animation"
+                embedSrc="https://www.youtube.com/embed/9nFp1l6j6DI"
+                chip={"研究室でアニメーションを学ぶ必要がありました。\nそこでの学習途中でのアウトプットのために制作したものです。\n仕様ソフト: Blender\nお借りしたモデル: https://free3d.com/ja/3d-model/sponge..."}
+            />
         </div>
       </div>
   )
 }
 
-function WorksCard(props: { image?: string; title: string; href: string; tag: string; embedSrc?: string; embedType?: 'spotify' | 'niconico', movie?: string , chip?: string; github?: string}) {
+function WorksCard(props: { image?: string; title: string; href: string; tag: string; embedSrc?: string; embedType?: 'spotify' | 'niconico' | 'youtube', movie?: string , chip?: string; github?: string}) {
     const isEmbed = !!props.embedSrc
     const isGithub = props.github?.includes('github.com')
     return(
@@ -93,19 +100,13 @@ function WorksCard(props: { image?: string; title: string; href: string; tag: st
             </a>
         )}
         {props.movie?.trim() && (
-          <div className="absolute left-[50%] -translate-x-1/2 -top-50 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none group-hover:pointer-events-auto text-white bg-black/60 px-8 py-6 rounded">
-            <video
-              src={props.movie}
-              controls
-              className="w-[28rem] max-w-[90vw] rounded-xl bg-black"
-            >
-              読み込みに失敗しました
-            </video>
+          <div className="absolute left-[50%] -translate-x-1/2 -top-10 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none group-hover:pointer-events-auto text-white bg-black/60 px-8 py-6 rounded w-[28rem] max-w-[90vw] text-left shadow-xl">
+            <a href={props.movie}><p>このテキストをクリックして動画をご覧になれます</p></a>
           </div>
         )}
         {props.chip?.trim() && (
           <div className="absolute left-[50%] -translate-x-1/2 bottom-0 translate-y-full z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none group-hover:pointer-events-auto text-white bg-black/60 px-6 py-3 rounded w-[28rem] max-w-[90vw] text-left shadow-xl">
-            <p className="text-sm leading-6">{props.chip}</p>
+            <p className="text-sm leading-6 whitespace-pre-wrap">{props.chip}</p>
           </div>
         )}
       </div>
